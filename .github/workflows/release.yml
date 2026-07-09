@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Publish client (Windows)
+        run: >
+          dotnet publish client/TimeTracker -c Release -r win-x64
+          --self-contained true -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -o publish/TimeTracker-Client-win-x64
+
+      - name: Publish server (Windows)
+        run: >
+          dotnet publish server/TimeTracker.Server -c Release -r win-x64
+          --self-contained true -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -o publish/TimeTracker-Server-win-x64
+
+      - name: Publish server (Linux)
+        run: >
+          dotnet publish server/TimeTracker.Server -c Release -r linux-x64
+          --self-contained true -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -o publish/TimeTracker-Server-linux-x64
+
+      - name: Add config templates to archives
+        run: |
+          Copy-Item docs/server-config.example.json publish/TimeTracker-Client-win-x64/server-config.example.json
+          Copy-Item server/TimeTracker.Server/appsettings.Example.json publish/TimeTracker-Server-win-x64/appsettings.Example.json
+          Copy-Item server/TimeTracker.Server/appsettings.Example.json publish/TimeTracker-Server-linux-x64/appsettings.Example.json
+
+      - name: Zip artifacts
+        run: |
+          Compress-Archive -Path publish/TimeTracker-Client-win-x64/* -DestinationPath TimeTracker-Client-win-x64.zip
+          Compress-Archive -Path publish/TimeTracker-Server-win-x64/* -DestinationPath TimeTracker-Server-win-x64.zip
+          Compress-Archive -Path publish/TimeTracker-Server-linux-x64/* -DestinationPath TimeTracker-Server-linux-x64.zip
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            TimeTracker-Client-win-x64.zip
+            TimeTracker-Server-win-x64.zip
+            TimeTracker-Server-linux-x64.zip
