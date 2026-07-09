@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{06F52F75-CE51-40CD-B27A-752FAF2CE4F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker", "client\TimeTracker\TimeTracker.csproj", "{D2138B94-7F92-41F8-A971-6A6E0385DDC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server", "server", "{85E76245-E0B4-498E-8345-A00B15125394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Server", "server\TimeTracker.Server\TimeTracker.Server.csproj", "{CD4B3BBE-6948-4ED9-A6BB-96E836C7D151}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2138B94-7F92-41F8-A971-6A6E0385DDC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2138B94-7F92-41F8-A971-6A6E0385DDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2138B94-7F92-41F8-A971-6A6E0385DDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2138B94-7F92-41F8-A971-6A6E0385DDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD4B3BBE-6948-4ED9-A6BB-96E836C7D151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4B3BBE-6948-4ED9-A6BB-96E836C7D151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4B3BBE-6948-4ED9-A6BB-96E836C7D151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4B3BBE-6948-4ED9-A6BB-96E836C7D151}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D2138B94-7F92-41F8-A971-6A6E0385DDC7} = {06F52F75-CE51-40CD-B27A-752FAF2CE4F7}
+		{CD4B3BBE-6948-4ED9-A6BB-96E836C7D151} = {85E76245-E0B4-498E-8345-A00B15125394}
+	EndGlobalSection
+EndGlobal

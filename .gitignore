@@ -1,0 +1,15 @@
+bin/
+obj/
+*.user
+publish/
+client/publish/
+server/publish/
+server/TimeTracker.Server/data/*.db
+server/TimeTracker.Server/data/*.db-*
+server/TimeTracker.Server/Data/*.db
+server/TimeTracker.Server/Data/*.db-*
+server/TimeTracker.Server/appsettings.Local.json
+server/TimeTracker.Server/appsettings.Production.json
+server/docker-compose.yml
+.claude/settings.local.json
+client/TimeTracker.sln

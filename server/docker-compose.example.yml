@@ -1,0 +1,17 @@
+# Скопируйте в docker-compose.yml (уже в .gitignore) и подставьте свои
+# значения TimeTracker__SharedToken / TimeTracker__AdminPassword.
+services:
+  timetracker-server:
+    build: ./TimeTracker.Server
+    ports:
+      - "8080:8080"
+    environment:
+      TimeTracker__SharedToken: "REPLACE_WITH_LONG_RANDOM_STRING"
+      TimeTracker__AdminUsername: "admin"
+      TimeTracker__AdminPassword: "REPLACE_WITH_STRONG_PASSWORD"
+    volumes:
+      - timetracker-data:/data
+    restart: unless-stopped
+
+volumes:
+  timetracker-data:

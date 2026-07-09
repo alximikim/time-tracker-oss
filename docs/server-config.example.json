@@ -1,0 +1,6 @@
+{
+  "apiUrl": "https://timetracker.example.com/api/events",
+  "sharedToken": "REPLACE_WITH_REAL_TOKEN",
+  "enableBreakButton": false,
+  "longSessionReminderHours": null
+}
